@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Packaging Rendang</title>
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex justify-center items-start p-8">
+  <div class="bg-gray-800 rounded-2xl shadow-xl p-8 w-full max-w-3xl">
+    <h1 class="text-3xl font-bold mb-4 text-center">Scan QR Label Indikator</h1>
+    <div id="reader" class="mx-auto mb-4 rounded-md border-2 border-gray-600" style="width:300px"></div>
+    <div id="quality" class="text-xl font-semibold mt-4"></div>
+    <div id="price" class="text-xl font-semibold"></div>
+
+    <div id="checkout-section" class="mt-8 space-y-4">
+      <div class="flex flex-wrap justify-center gap-4">
+        <button onclick="checkout()" class="bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg">Simpan Data & Checkout</button>
+        <button onclick="exportCSV()" class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded-lg">Export ke CSV</button>
+        <button onclick="clearData()" class="bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded-lg">Hapus Riwayat</button>
+      </div>
+      <div id="checkout" class="text-sm text-gray-300"></div>
+    </div>
+
+    <div id="generator" class="mt-10">
+      <h2 class="text-2xl font-semibold mb-2 text-center">Generate QR dari Nilai RGB</h2>
+      <div class="flex flex-wrap justify-center gap-4 mb-4">
+        <input type="number" id="r" placeholder="R (0-255)" min="0" max="255" class="w-28 px-3 py-2 rounded-lg text-black">
+        <input type="number" id="g" placeholder="G (0-255)" min="0" max="255" class="w-28 px-3 py-2 rounded-lg text-black">
+        <input type="number" id="b" placeholder="B (0-255)" min="0" max="255" class="w-28 px-3 py-2 rounded-lg text-black">
+      </div>
+      <button onclick="generateQR()" class="bg-purple-600 hover:bg-purple-500 text-white py-2 px-4 rounded-lg">Buat QR</button>
+      <div class="mt-4 flex justify-center">
+        <canvas id="qrCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
